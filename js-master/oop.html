@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  class Customer {
+    constructor(id,customerNumber) {
+        this.id = id;   //aslında burada da object prototyping yapılır.
+        this.customerNumber = customerNumber;  //aslında burada da object prototyping yapılır.
+    }
+  }
+  let customer = new Customer(1,"1354");
+  console.log(customer.id);
+
+  //prototyping  //bir nesneye başka özellik eklenmesidir. constructorda tanımlanmadığında bile özellik eklenmesidir.
+  customer.name ="Yasin"
+  console.log(customer.name)
+
+  Customer.category= "Phone" //class prototyping
+  console.log(Customer.category)
+
+  class IndividualCustomer extends Customer {
+        constructor(firstName,id,customerNumber) {
+            super(id,customerNumber);  //base class constructor ını çalıştır.
+            this.firstName=firstName;
+        }
+  }
+
+  class CorporateCustomer extends Customer{
+      constructor(companyName,id,customerNumber) {
+          super(id,customerNumber);
+          this.companyName=companyName;
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

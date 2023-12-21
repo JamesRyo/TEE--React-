@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  //rest  - istediğimiz kadar parametre gönderebiliriz.
+  //varArgs (javada ki rest)
+  let showProducts = function (id,...products) {  //id ve geriye kalanlar products olsun. Products arraydir.
+    console.log(id)
+    console.log(products)
+  }
+
+  //console.log(typeof showProducts);
+  showProducts(10,"Phone","Tab"); // phone ve tab array olarak gelir.
+  showProducts(10,["Phone","Tab"]); //array içinde array olarak gelir. Frontend de ekrana yazarken products[0] dememiz gerekir.
+
+  //spread - elimizde arrayı ayrıştırır.
+  let points = [1,2,3,78,25,54]
+  console.log(...points)  //array olarak değil ayrı ayrı değerler olarak yazdı.1 2 3 78 25 54 olarak array olarak değil
+  console.log(Math.max(...points))
+  console.log(..."ABC","D") // A B C D
+
+  //Destructuring - parçala - elimizdeki arrayin değerlerini değişkenlere atama yöntemidir.
+  /*let populations = [1500,2000,2500]
+  let [small,medium,high] = populations
+  console.log(small,medium,high) //1500 2000 2500*/
+
+
+  let populations = [1500,2000,2500,[3500,4500]]
+  let [small,medium,high,[veryHigh,max]] = populations
+  console.log(small,medium,high,veryHigh,max) //1500 2000 2500 3500 4500
+
+  function destructuring([small1],number){ //bir array gelir ve gelen array de ki ilk değişkeni small1 e atar. [small1] yaparak destructuring geliceğini söyleriz.
+      console.log(small1)
+  }
+  destructuring(populations) // 1500 - ilk değeri aldı.
+
+  //object destructuring
+
+  let category = {id: 1, categoryName:"Phone"};
+  console.log(category.id)
+  console.log(category["categoryName"])  //object böyle de alınabilir.
+
+  let {id,categoryName} = category //object de destructuring böyle yapılır
+  console.log(id)
+  console.log(categoryName)  //değişkenlere atamış olduk.
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let cart = [
+        {id:1, productName:"Tab", quantity:3, unitPrice:2000},
+        {id:2, productName:"Book", quantity:2, unitPrice:35},
+        {id:3, productName:"Pen", quantity:1, unitPrice:25},
+        {id:4, productName:"Cablo", quantity:2, unitPrice:80},
+        {id:5, productName:"Mp3", quantity:3, unitPrice:30},
+        {id:6, productName:"Pc", quantity:5, unitPrice:1000},
+    ]
+
+    console.log("<ul>")
+    cart.map(product=>{  //map cart arrayını sırasıyla gezer.
+        console.log("<li>"+product.productName + " : "
+            + product.unitPrice * product.quantity+"</li>")
+    })
+    console.log("</ul>")
+
+    //reduce
+    let total = cart.reduce((acc,product)=>acc+ product.unitPrice * product.quantity,0) //burdaki 0 başlangıç değeri herbir unitPrice değerini birbirine ekler. Acc değeri burda accumulatordan geliyor. herbir ürün için acc ye ekle (üstüne ekler).// mesela sepete eklendiğinde toplam parayı göstericek
+    console.log(total)
+
+    let filteredProducts = cart.filter(product=>product.quantity>2) //filtreleme - filter yenir bir array oluşturur referansı değiştirmiş oluruz. state management i daha kolay hallederiz.
+    console.log(filteredProducts)
+
+    function addToCart(cart) {
+        cart.push({id:7, productName:"Phone", quantity:5, unitPrice:1000})
+    }
+    addToCart(cart)
+    console.log(cart)
+
+    let cartTotal = cart.filter(p=>p.unitPrice > 100).map( p=> {
+        p.unitPrice = p.unitPrice * 1.08
+        return p
+    }).reduce((acc, p) => acc+p.unitPrice, 0)
+
+    console.log(cartTotal)
+</script>
+
+</body>
+</html>
